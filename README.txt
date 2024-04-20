@@ -1,33 +1,50 @@
+# Voronoi Algorithm Overview
 
-Payne Clark
+The Voronoi algorithm is used to partition a space into regions based on proximity to a set of input points. Its purpose is to efficiently divide space into distinct areas, where each area encompasses all the points that are closer to a specific input point than to any other point in the set. This algorithm finds applications in various fields, including computer graphics, geographical analysis, pattern recognition, and robotics, where spatial organization or proximity-based analysis is required. It's particularly useful in problems involving spatial clustering, nearest neighbor searches, and spatial interpolation.
 
-This is a usage of a complex algorithm from this research Paper (https://www.researchgate.net/publication/318208318_EXAMINING_THE_USE_OF_VORONOI_DIAGRAMS_IN_ARCHITECTURE_ON_A_STUDENT_PROJECT)
-I mostly taught myself the research paper is just to show you what it is.
+## Algorithm Steps
 
-This Lab meets the requirements for the research alg and the glass breaking simulation
+- **Input:** Set of points P = {p1, p2, ..., pn}
 
-The code isnt too long but this took me well over 40 hours to do as the full fledge alg is insanley complex and I had to keep doing simplifications 
-as my math knowledge and mesh knowledge was not up to snuff
+1. **Initialization:** Initialize an empty list of Voronoi cells or regions.
 
-I wanted to do this in 3d however the proffessor said a 2d implementation would be enough
+2. **Edge Calculation:**
+   - For each point pi in P:
+       - Initialize an empty list of edges.
+       - For each point pj in P where j ≠ i:
+           - Calculate the perpendicular bisector of the line segment connecting pi and pj.
+           - Add the bisector to the list of edges.
 
-Voronoi Diagram Implementation in Unity:
+3. **Vertex Calculation:**
+   - For each pair of adjacent edges:
+       - Find their intersection point.
+       - Add this point to the list of vertices of the corresponding Voronoi cell.
+
+4. **Cell Creation:**
+   - For each point pi in P:
+       - Create a Voronoi cell using the vertices obtained in step 3.
+       - Add this cell to the list of Voronoi cells.
+
+5. **Output:** Output the list of Voronoi cells.
+
+# Voronoi Diagram Implementation in Unity
+
 This project demonstrates a Voronoi diagram generator implemented in Unity using C#.
-The Voronoi diagram is created on a grid, where each cell is assigned a random color from a predefined set.
 
-Cell Separation:
-The Voronoi diagram separates the grid into regions based on the proximity to a set of randomly generated points.
-Each cell represents a region of influence around its corresponding point.
+## Cell Separation
 
-Interactive Glass Breaking:
-Left-clicking on the diagram simulates glass breaking by destroying the Voronoi cells.
-Upon destruction, the plane breaks apart creating an effect similar to shattered glass.
+The Voronoi diagram separates the grid into regions based on the proximity to a set of randomly generated points. Each cell represents a region of influence around its corresponding point.
 
-Implementation Details:
-The project utilizes Unity's RawImage component to render the Voronoi diagram on a canvas.
-Voronoi cells are represented as Customized meshes.
-Random movement is applied to the shattered pieces, adding dynamism to the simulation.
+## Interactive Glass Breaking
 
-Usage:
+- Left-clicking on the diagram simulates glass breaking by destroying the Voronoi cells. Upon destruction, the plane breaks apart creating an effect similar to shattered glass.
 
-Left-click on the diagram to trigger the glass-breaking effect.
+## Implementation Details
+
+- **Rendering:** The project utilizes Unity's RawImage component to render the Voronoi diagram on a canvas.
+- **Representation:** Voronoi cells are represented as customized meshes.
+- **Dynamism:** Random movement is applied to the shattered pieces, adding dynamism to the simulation.
+
+## Usage
+
+- Left-click on the diagram to trigger the glass-breaking effect.
